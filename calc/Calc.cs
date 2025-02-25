@@ -1,15 +1,30 @@
 ﻿using System.Data;
+using System.Drawing; // Не забудьте добавить это пространство имен
 
 namespace calc
 {
     public partial class Calc : Form
     {
+        private Button[] buttons; // Массив кнопок
         public Calc()
         {
             InitializeComponent();
             // Запрет изменения размера окна
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false; // Убираем кнопку максимизации
+
+            // Инициализация массива кнопок
+            InitializeButtons();
+        }
+
+        private void InitializeButtons()
+        {
+            // Предполагаем, что у вас есть кнопки button1, button2, ..., button20 на форме
+            buttons = new Button[] { button1, button2, button3, button4, button5,
+                                      button6, button7, button8, button9, button10,
+                                      button11, button12, button13, button14, button15,
+                                      button16, button17, button18, button19, button20, button21,
+                                      button22};
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,6 +73,38 @@ namespace calc
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+        //private void randomColor_Click(object sender, EventArgs e)
+        //{
+        //    Random rand = new Random();
+        //    foreach (var button in buttons)
+        //    {
+        //        button.BackColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+        //    }
+        //    textBox1.BackColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+        //}
+
+        private void Black(object sender, EventArgs e)
+        {
+            foreach (var button in buttons)
+            {   // Меняем цвет фона формы на черный
+                this.BackColor = Color.DarkGray;
+
+                button.BackColor = Color.WhiteSmoke; // Меняем цвет всех кнопок на черный
+            }
+            textBox1.BackColor = Color.WhiteSmoke; // Также меняем цвет текстового поля
+        }
+
+        private void White(object sender, EventArgs e)
+        {
+            foreach (var button in buttons)
+            {
+                // Меняем цвет фона формы на белый
+                this.BackColor = Color.White;
+
+                button.BackColor = Color.White; // Меняем цвет всех кнопок на белый
+            }
+            textBox1.BackColor = Color.WhiteSmoke; // Также меняем цвет текстового поля
         }
     }
 }
