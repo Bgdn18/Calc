@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using System.Drawing; // Не забудьте добавить это пространство имен
+using System.Drawing; // Для Рандомной Смены Цвета (Вырезано В Этом Билде)
 
 namespace calc
 {
@@ -9,28 +9,28 @@ namespace calc
         public Calc()
         {
             InitializeComponent();
-            // Запрет изменения размера окна
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false; // Убираем кнопку максимизации
+            this.MaximizeBox = false;
 
             // Инициализация массива кнопок
-            InitializeButtons();
-        }
-
-        private void InitializeButtons()
-        {
-            // Предполагаем, что у вас есть кнопки button1, button2, ..., button20 на форме
             buttons = new Button[] { button1, button2, button3, button4, button5,
-                                      button6, button7, button8, button9, button10,
-                                      button11, button12, button13, button14, button15,
-                                      button16, button17, button18, button19, button20, button21,
-                                      button22};
+                              button6, button7, button8, button9, button10,
+                              button11, button12, button13, button14, button15,
+                              button16, button17, button18, button19, button20, };
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             var currentButton = sender as Button;
-            textBox1.Text += currentButton.Text;
+            if (currentButton != null) // Проверка на null
+            {
+                textBox1.Text += currentButton.Text;
+            }
+            else
+            {
+                // Обработка случая, если sender не является Button
+                MessageBox.Show("Ошибка: sender не является кнопкой.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace calc
                 textBox1.Text = d.Compute(textBox1.Text, "").ToString();
             }
 
-            /* Обработка ошибки в случае деления на буквы */
+             // Обработка ошибки
 
             catch (EvaluateException)
             {
@@ -55,7 +55,7 @@ namespace calc
             }
         }
 
-        private void Clear(object sender, EventArgs e)
+        private void Clear(object sender, EventArgs e)  // Очищает колхозно наш текст бокс на один символ
         {
             var str = "";
             for (int i = 0; i < textBox1.Text.Length - 1; i++)
@@ -65,29 +65,34 @@ namespace calc
             textBox1.Text = str;
         }
 
-        private void ClearC(object sender, EventArgs e)
+        private void ClearC(object sender, EventArgs e)  // Не менее колхозно убирает текст полностью
         {
             textBox1.Text = "";
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        //Ниже рандомные цвета если вы смотрите данный чудокод можете раскоментировать (В Данном Билде Это Вырезано)
+
+        /*
+        private void randomColor_Click(object sender, EventArgs e)
         {
-
+            Random rand = new Random();
+            foreach (var button in buttons)
+            {
+                button.BackColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+            }
+            textBox1.BackColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
         }
-        //private void randomColor_Click(object sender, EventArgs e)
-        //{
-        //    Random rand = new Random();
-        //    foreach (var button in buttons)
-        //    {
-        //        button.BackColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
-        //    }
-        //    textBox1.BackColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
-        //}
 
-        private void Black(object sender, EventArgs e)
+        */
+
+
+
+        //ЧЕРНАЯ ТЕМА
+
+        private void Black(object sender, EventArgs e)  // Меняем цвет фона формы на черный
         {
             foreach (var button in buttons)
-            {   // Меняем цвет фона формы на черный
+            {   
                 this.BackColor = Color.DarkGray;
 
                 button.BackColor = Color.WhiteSmoke; // Меняем цвет всех кнопок на черный
@@ -95,11 +100,13 @@ namespace calc
             textBox1.BackColor = Color.WhiteSmoke; // Также меняем цвет текстового поля
         }
 
-        private void White(object sender, EventArgs e)
+        //БЕЛАЯ ТЕМА
+
+        private void White(object sender, EventArgs e)  // Меняем цвет фона формы на белый
         {
             foreach (var button in buttons)
             {
-                // Меняем цвет фона формы на белый
+                
                 this.BackColor = Color.White;
 
                 button.BackColor = Color.White; // Меняем цвет всех кнопок на белый

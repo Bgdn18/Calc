@@ -59,7 +59,7 @@
             button1.BackColor = Color.White;
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
-            button1.Location = new Point(93, 120);
+            button1.Location = new Point(102, 120);
             button1.Name = "button1";
             button1.Size = new Size(75, 75);
             button1.TabIndex = 0;
@@ -124,9 +124,9 @@
             button6.BackColor = Color.White;
             button6.Cursor = Cursors.Hand;
             button6.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
-            button6.Location = new Point(93, 414);
+            button6.Location = new Point(102, 414);
             button6.Name = "button6";
-            button6.Size = new Size(175, 75);
+            button6.Size = new Size(166, 75);
             button6.TabIndex = 6;
             button6.Text = "Clear";
             button6.UseVisualStyleBackColor = false;
@@ -189,7 +189,7 @@
             button11.BackColor = Color.White;
             button11.Cursor = Cursors.Hand;
             button11.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
-            button11.Location = new Point(93, 219);
+            button11.Location = new Point(102, 219);
             button11.Name = "button11";
             button11.Size = new Size(75, 75);
             button11.TabIndex = 9;
@@ -254,7 +254,7 @@
             button16.BackColor = Color.White;
             button16.Cursor = Cursors.Hand;
             button16.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold);
-            button16.Location = new Point(93, 315);
+            button16.Location = new Point(102, 315);
             button16.Name = "button16";
             button16.Size = new Size(75, 75);
             button16.TabIndex = 12;
@@ -266,10 +266,10 @@
             // 
             textBox1.BackColor = Color.WhiteSmoke;
             textBox1.Cursor = Cursors.IBeam;
-            textBox1.Location = new Point(93, 37);
+            textBox1.Location = new Point(102, 37);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(360, 48);
+            textBox1.Size = new Size(351, 48);
             textBox1.TabIndex = 16;
             // 
             // button17
@@ -384,7 +384,6 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Calc";
             Text = "Calculator";
-            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
