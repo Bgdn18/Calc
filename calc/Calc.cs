@@ -7,17 +7,26 @@ namespace calc
     {
         private void ShowRandomMessageBox(Random rand)
         {
-            // Генерация случайных координат
-            int screenWidth = Screen.PrimaryScreen.Bounds.Width;
-            int screenHeight = Screen.PrimaryScreen.Bounds.Height;
-            int x = rand.Next(0, screenWidth - 300); // 300 - примерная ширина MessageBox
-            int y = rand.Next(0, screenHeight - 150); // 150 - примерная высота MessageBox
+            // Проверяем, что PrimaryScreen не равен null
+            if (Screen.PrimaryScreen != null)
+            {
+                // Генерация случайных координат
+                int screenWidth = Screen.PrimaryScreen.Bounds.Width;
+                int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+                int x = rand.Next(0, screenWidth - 300); // 300 - примерная ширина MessageBox
+                int y = rand.Next(0, screenHeight - 150); // 150 - примерная высота MessageBox
 
-            // Создание и отображение CustomMessageBox
-            var customMessageBox = new CustomMessageBox("ВАША ЖОПА БЫЛА ВЗЛОМАНА", "ВНИМАНИЕ!!!", MessageBoxIcon.Error);
-            customMessageBox.StartPosition = FormStartPosition.Manual; // Устанавливаем положение вручную
-            customMessageBox.Location = new Point(x, y); // Задаем случайные координаты
-            customMessageBox.Show(); // Показываем форму
+                // Создание и отображение CustomMessageBox
+                var customMessageBox = new CustomMessageBox("ВАША ЖОПА БЫЛА ВЗЛОМАНА", "ВНИМАНИЕ!!!", MessageBoxIcon.Error);
+                customMessageBox.StartPosition = FormStartPosition.Manual; // Устанавливаем положение вручную
+                customMessageBox.Location = new Point(x, y); // Задаем случайные координаты
+                customMessageBox.Show(); // Показываем форму
+            }
+            else
+            {
+                // Обработка случая, если PrimaryScreen равен null
+                MessageBox.Show("Main screen not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private Button[] buttons; // Массив кнопок
@@ -35,7 +44,6 @@ namespace calc
                               button21, button22,button23,button24,button25,
                               button26,button27,button28,button29,button30};
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
